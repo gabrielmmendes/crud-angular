@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Movie} from "../model/movie";
+import {MovieService} from "../services/movie.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-movie',
@@ -8,24 +10,13 @@ import {Movie} from "../model/movie";
 })
 export class MovieComponent implements OnInit {
 
-  movie: Movie[] = [
-    {
-      id: '12313131',
-      title: 'Shrek',
-      image: 'shrek.com',
-      imdbRating: 10.0
-    },
-    {
-      id: '1231313174567567',
-      title: 'Shrek 2',
-      image: 'shrek2.com',
-      imdbRating: 10.0
-    }
-  ];
+  movies$: Observable<Movie[]>;
 
   displayedColumns = ['title', 'image', 'imdbRating']
 
-  constructor( ) { }
+  constructor(private movieService: MovieService) {
+    this.movies$ = this.movieService.findAll();
+  }
   ngOnInit(): void {
   }
 }
