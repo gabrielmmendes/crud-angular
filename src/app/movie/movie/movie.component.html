@@ -13,8 +13,19 @@
 
         <!-- Imdb Rating Column -->
         <ng-container matColumnDef="imdbRating">
-          <th mat-header-cell *matHeaderCellDef> Nota </th>
-          <td mat-cell *matCellDef="let movie"> {{ movie.imdbRating }} </td>
+          <th mat-header-cell *matHeaderCellDef> Estrelas </th>
+          <td mat-cell *matCellDef="let movie">
+            <mat-icon *ngIf="movie.imdbRating < 2" aria-hidden="false" aria-label="Star icon" fontIcon=star_half></mat-icon>
+            <mat-icon *ngIf="movie.imdbRating > 2" aria-hidden="false" aria-label="Star icon" fontIcon=star></mat-icon>
+            <mat-icon *ngIf="movie.imdbRating > 3 && movie.imdbRating < 4" aria-hidden="false" aria-label="Star icon" fontIcon=star_half></mat-icon>
+            <mat-icon *ngIf="movie.imdbRating > 4" aria-hidden="false" aria-label="Star icon" fontIcon=star></mat-icon>
+            <mat-icon *ngIf="movie.imdbRating > 5 && movie.imdbRating < 6" aria-hidden="false" aria-label="Star icon" fontIcon=star_half></mat-icon>
+            <mat-icon *ngIf="movie.imdbRating > 6" aria-hidden="false" aria-label="Star icon" fontIcon=star></mat-icon>
+            <mat-icon *ngIf="movie.imdbRating > 7 &&  movie.imdbRating < 8" aria-hidden="false" aria-label="Star icon" fontIcon=star_half></mat-icon>
+            <mat-icon *ngIf="movie.imdbRating > 8" aria-hidden="false" aria-label="Star icon" fontIcon=star></mat-icon>
+            <mat-icon *ngIf="movie.imdbRating > 9 &&  movie.imdbRating < 10" aria-hidden="false" aria-label="Star icon" fontIcon=star_half></mat-icon>
+            <mat-icon *ngIf="movie.imdbRating == 10" aria-hidden="false" aria-label="Star icon" fontIcon=star></mat-icon>
+          </td>
         </ng-container>
 
         <!-- Image Column -->
